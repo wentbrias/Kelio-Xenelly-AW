@@ -36,11 +36,11 @@ function repeatBuyers(transactions){
          if(findExistingIndex > -1){
             repeatBuyer[findExistingIndex].count += 1;
         } else {
-             repeatBuyer.push({ buyer: item.buyer, count:0  });
+             repeatBuyer.push({ buyer: item.buyer, count:1  });
          }
     });
 
-    return repeatBuyer;
+    return repeatBuyer.filter(item => item.count > 1).map(item => item.buyer);
 }
 
 function topCategory(transactions){
@@ -54,4 +54,4 @@ console.log(revenueByCategory(transactions));
 console.log(repeatBuyers(transactions));
 console.log(topCategory(transactions));
 
-module.exports = { topCategory,repeatBuyers, totalRevenue,revenueByCategory}
+module.exports = { repeatBuyers,topCategory,revenueByCategory,totalRevenue }
